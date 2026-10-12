@@ -1,0 +1,4 @@
+﻿  pract9_SP.cpp
+C:\Users\Анатолий\Desktop\задачи\sp9\pract9_SP.cpp(198,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\Анатолий\Desktop\задачи\sp9\pract9_SP.cpp(328,15): warning C4834: удаление возвращаемого значения функции с атрибутом [[nodiscard]]
+  pract9_SP.vcxproj -> C:\Users\Анатолий\Desktop\задачи\sp9\x64\Debug\pract9_SP.exe

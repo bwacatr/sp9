@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\st310-08\\Desktop\\Romanov_PR31\\pract9_SP\\",
+  "WorkspaceRootPath": "C:\\Users\\\u0410\u043D\u0430\u0442\u043E\u043B\u0438\u0439\\Desktop\\\u0437\u0430\u0434\u0430\u0447\u0438\\sp9\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{00E33870-7030-4A4C-B73C-92E774E7EFE7}|pract9_SP.vcxproj|C:\\Users\\st310-08\\Desktop\\Romanov_PR31\\pract9_SP\\pract9_SP.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{00E33870-7030-4A4C-B73C-92E774E7EFE7}|pract9_SP.vcxproj|C:\\Users\\\u0410\u043D\u0430\u0442\u043E\u043B\u0438\u0439\\Desktop\\\u0437\u0430\u0434\u0430\u0447\u0438\\sp9\\pract9_SP.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{00E33870-7030-4A4C-B73C-92E774E7EFE7}|pract9_SP.vcxproj|solutionrelative:pract9_SP.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
@@ -24,23 +24,21 @@
               "DocumentIndex": 1,
               "Title": "PtrExample.cpp",
               "DocumentMoniker": "C:\\Users\\st310-08\\AppData\\Local\\Temp\\Rar$DIa3860.31877.rartemp\\PtrExample.cpp",
-              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa3860.31877.rartemp\\PtrExample.cpp",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\st310-08\\AppData\\Local\\Temp\\Rar$DIa3860.31877.rartemp\\PtrExample.cpp",
               "ToolTip": "C:\\Users\\st310-08\\AppData\\Local\\Temp\\Rar$DIa3860.31877.rartemp\\PtrExample.cpp",
-              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa3860.31877.rartemp\\PtrExample.cpp",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAAEoAAAACAAAAAAAAAA==",
+              "RelativeToolTip": "..\\..\\..\\..\\st310-08\\AppData\\Local\\Temp\\Rar$DIa3860.31877.rartemp\\PtrExample.cpp",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-10-05T09:39:42.354Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-05T09:39:42.354Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "pract9_SP.cpp",
-              "DocumentMoniker": "C:\\Users\\st310-08\\Desktop\\Romanov_PR31\\pract9_SP\\pract9_SP.cpp",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0442\u043E\u043B\u0438\u0439\\Desktop\\\u0437\u0430\u0434\u0430\u0447\u0438\\sp9\\pract9_SP.cpp",
               "RelativeDocumentMoniker": "pract9_SP.cpp",
-              "ToolTip": "C:\\Users\\st310-08\\Desktop\\Romanov_PR31\\pract9_SP\\pract9_SP.cpp",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0442\u043E\u043B\u0438\u0439\\Desktop\\\u0437\u0430\u0434\u0430\u0447\u0438\\sp9\\pract9_SP.cpp",
               "RelativeToolTip": "pract9_SP.cpp",
-              "ViewState": "AgIAAL8AAAAAAAAAAAAUwNwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAAIwDEAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-10-05T09:29:13.212Z",
               "EditorCaption": ""

@@ -7,10 +7,10 @@ using namespace std;
 
 struct Product
 {
-    int id = 0;
-    double price = 0;
-    double markup = 0;
-    double totalPrice = 0;
+    int id{ 0 };
+    double price{ 0 };
+    double markup{ 0 };
+    double totalPrice{0};
 
 };
 
@@ -27,6 +27,7 @@ void Info(Product* array, int size)
     for (int i = 0; i < size; i++)
     {
         array = (array + i);
+        
         cout << "\nПродукт номер: " << array->id << " цена: " << array->price << " фиксированная наценка: " << array->markup << " итоговая цена:" << array->totalPrice  << endl;
     }
 }
@@ -39,19 +40,34 @@ void DiscountBy10(Product* array, int size)
         return;
     }
 
-    cout << "\n\nДо:\n" << endl;
-    Info(array, size);
+    
 
 
     for (int i = 0; i < size; i++)
     {
         array = (array + i);
-        
-        array->price = array->price - (array->price * 0.1);
+
+        if (!(array->totalPrice < 10.0))
+        {
+
+
+
+            double difference = array->totalPrice;
+
+            array->totalPrice = array->totalPrice - (array->totalPrice * 0.1);
+
+            difference -= array->totalPrice;
+
+            array->price -= difference;
+        }
+        else
+        {
+            cout << "\n\nСлишком низкая цена для скидки у номера " << array->id << "\n" << endl;
+            
+        }
     }
 
-    cout << "\n\nПосле:\n" << endl;
-    Info(array, size);
+    
 }
 
 void RoundOffTotalPrices(Product* array, int size)
@@ -62,18 +78,17 @@ void RoundOffTotalPrices(Product* array, int size)
         return;
     }
 
-    cout << "\n\nДо:\n" << endl;
-    Info(array, size);
+    
 
     for (int i = 0; i < size; i++)
     {
         array = (array + i);
 
-        array->totalPrice = ceil(array->totalPrice);
+        array->price = round(array->price);
+        array->totalPrice = array->price + array->markup;
     }
 
-    cout << "\n\nПосле:\n" << endl;
-    Info(array, size);
+    
 }
 
 void DiscountBy20(Product* array, int size)
@@ -84,18 +99,32 @@ void DiscountBy20(Product* array, int size)
         return;
     }
 
-    cout << "\n\nДо:\n" << endl;
-    Info(array, size);
+    
 
     for (int i = 0; i < size; i++)
     {
         array = (array + i);
 
-        array->price = array->price - (array->price * 0.2);
+        if (!(array->totalPrice < 10.0))
+        {
+            
+
+            double difference = array->totalPrice;
+
+            array->totalPrice = array->totalPrice - (array->totalPrice * 0.2);
+
+            difference -= array->totalPrice;
+
+            array->price -= difference;
+        }
+        else
+        {
+            cout << "\n\nСлишком низкая цена для скидки у номера " << array->id << "\n" << endl;
+            
+        }
     }
 
-    cout << "\n\nПосле:\n" << endl;
-    Info(array, size);
+    
 }
 
 void RandomizeMarkup(Product* array, int size)
@@ -106,21 +135,21 @@ void RandomizeMarkup(Product* array, int size)
         return;
     }
 
-    double markupNum = rand() % 500;
-
-    cout << "\n\nДо:\n" << endl;
-    Info(array, size);
+    
+    double markupNum;
+    
 
     for (int i = 0; i < size; i++)
     {
         array = (array + i);
 
+        markupNum = rand() % 500;
+
         array->markup = markupNum;
         array->totalPrice = array->price + array->markup;
     }
 
-    cout << "\n\nПосле:\n" << endl;
-    Info(array, size);
+    
 }
 
     void RandomizePrices(Product* array, int size)
@@ -133,8 +162,7 @@ void RandomizeMarkup(Product* array, int size)
 
         int num;
 
-        cout << "\n\nДо:\n" << endl;
-        Info(array, size);
+        
 
         for (int i = 0; i < size; i++)
         {
@@ -143,12 +171,11 @@ void RandomizeMarkup(Product* array, int size)
             array = (array + i);
             array->id = i;
             array->price = num;
-            array->totalPrice = array->totalPrice + array->markup;
+            array->markup = 0;
+            array->totalPrice = array->price + array->markup;
         }
 
-        cout << "\n\nПосле:\n" << endl;
-
-        Info(array, size);
+        
     }
 
 
@@ -170,50 +197,136 @@ int main()
 
     srand(time(NULL));
 
-    void (*operation1)(Product*, int) = RandomizePrices;
-    void (*operation2)(Product*, int) = Info;
-    void (*operation3)(Product*, int) = DiscountBy10;
-    void (*operation4)(Product*, int) = DiscountBy20;
-    void (*operation5)(Product*, int) = RandomizeMarkup;
-    void (*operation6)(Product*, int) = RoundOffTotalPrices;
+    void (*randomizePrices)(Product*, int) = RandomizePrices;
+    void (*info)(Product*, int) = Info;
+    void (*discountBy10)(Product*, int) = DiscountBy10;
+    void (*discountBy20)(Product*, int) = DiscountBy20;
+    void (*randomizeMarkup)(Product*, int) = RandomizeMarkup;
+    void (*roundOffTotalPrices)(Product*, int) = RoundOffTotalPrices;
 
     void (*processors[])(Product*, int) = 
     {
-        operation1,
-        operation2,
-        operation3,
-        operation4,
-        operation5,
-        operation6
+        randomizePrices,
+        info,
+        discountBy10,
+        discountBy20,
+        randomizeMarkup,
+        roundOffTotalPrices
     };
 
-    int count;
-    cout << "Введите количество продуктов: " << endl;
-    cin >> count;
-
-    Product* products = nullptr;
-
-    if (count > 0)
+    try
     {
-        products = new Product[count];
-    }
-    else
-    {
-        cout << "\nНет данных\n" << endl;
-        return 0;
-    }
 
-    int choiceNum;
+       
+        
+        int count;
+        cout << "Введите количество продуктов: " << endl;
+        cin >> count;
 
-    do
-    {
-        cout << "1. Ввести продукты" << "\n" << "2. Показать продукты" << "\n" << "3. Применить скидку 10% " << "\n" << "4. Применить скидку 20%" << "\n" << "5. Применить скидку 20%" << "\n" <<
-        switch (choiceNum)
+        Product* products = nullptr;
+
+
+        if (count > 0)
         {
-        default:
-            break;
+            products = new Product[count];
         }
-    } while (true);
+        else
+        {
+            cout << "\nНет данных\n" << endl;
+            return 0;
+        }
+
+        int choiceNum;
+        bool continueLoop = true;
+
+
+
+        do
+        {
+            cout << "1. Ввести продукты" << "\n" << "2. Показать продукты" << "\n" << "3. Применить скидку 10% " << "\n" << "4. Применить скидку 20%" << "\n" << "5. Добавить фиксированную наценку" << "\n" << "6. Округлить цены до целого" << "\n" << "6. Выйти" << endl;
+            
+            cin >> choiceNum;
+            
+            if (choiceNum == 1)
+            {
+
+
+                cout << "\n\nДо:\n" << endl;
+                applyProcessing(products, count, processors[1]);
+
+
+                applyProcessing(products, count, processors[0]);
+
+
+                cout << "\n\nПосле:\n" << endl;
+                applyProcessing(products, count, processors[1]);
+            }
+            else if (choiceNum == 2)
+            {
+                processors[1](products, count);
+                
+                    
+            }
+            else if (choiceNum == 3)
+            {
+                cout << "\n\nДо:\n" << endl;
+                applyProcessing(products, count, processors[1]);
+
+
+                applyProcessing(products, count, processors[2]);
+
+
+                cout << "\n\nПосле:\n" << endl;
+                applyProcessing(products, count, processors[1]);
+                
+            }
+            else if (choiceNum == 4)
+            {
+                cout << "\n\nДо:\n" << endl;
+                applyProcessing(products, count, processors[1]);
+
+
+                applyProcessing(products, count, processors[3]);
+
+
+                cout << "\n\nПосле:\n" << endl;
+                applyProcessing(products, count, processors[1]);
+            }
+            else if (choiceNum == 5)
+            {
+                cout << "\n\nДо:\n" << endl;
+                applyProcessing(products, count, processors[1]);
+
+
+                applyProcessing(products, count, processors[4]);
+
+
+                cout << "\n\nПосле:\n" << endl;
+                applyProcessing(products, count, processors[1]);
+            }
+            else if (choiceNum == 6)
+            {
+                cout << "\n\nДо:\n" << endl;
+                applyProcessing(products, count, processors[1]);
+
+
+                applyProcessing(products, count, processors[5]);
+
+
+                cout << "\n\nПосле:\n" << endl;
+                applyProcessing(products, count, processors[1]);
+            }
+            else
+            {
+                continueLoop = false;
+            }
+            
+        } while (continueLoop);
+    }
+    catch (std::invalid_argument& e)
+    {
+        e.what();
+    }
 
 }
 
